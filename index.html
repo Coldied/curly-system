@@ -2,9 +2,166 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <title>Parallax</title>
 </head>
+
 <body>
-<h1>Hello Kitty!</h1>
+<div class="wrapper">
+
+    <h2>Will You be my valentine?</h2>
+
+    <div class="pikachu">
+
+        <div class="head">
+
+            <div class="ears left brown"><div class="ears-inside yellow"></div></div>
+            <div class="ears right brown"><div class="ears-inside yellow"></div></div>
+
+            <div class="face yellow">
+                <span class="eye left brown"></span>
+                <span class="eye right brown"></span>
+                <span class="mouth">w</span>
+
+                <span class="cachete left"></span>
+                <span class="cachete right"></span>
+
+            </div>
+        </div>
+
+        <div class="body yellow">
+
+            <div class="heart"></div>
+
+            <div class="paw left yellow"></div>
+            <div class="paw right yellow"></div>
+
+        </div>
+
+        <div class="leg left yellow-dark"></div>
+        <div class="leg right yellow-dark"></div>
+
+        <div class="tail yellow-dark"></div>
+        <div>
+            <i class="much-heart"></i>
+        </div>
+    </div>
+    <div class="buttons">
+        <button id="moveButton" class="button">Нет, я люблю Ди Каприо</button>
+        <button id="secondButton" class="button">ДА КОНЕЧНО</button>
+        <input type="file" id="fileInput" style="display:none;">
+    </div>
+</div>
+
+<script>
+    var clickCount = 0; // Variable to track the number of clicks
+
+    // Function to move the button to a random position
+    function moveButton(button) {
+        var randomX = Math.floor(Math.random() * 201) - 100; // Random value between -100 and 100
+        var randomY = Math.floor(Math.random() * 201) - 100; // Random value between -100 and 100
+
+        button.style.transition = 'transform 0.5s ease';
+        button.style.transform = 'translate(' + randomX + 'px, ' + randomY + 'px)';
+    }
+
+    // Add event listener to the button
+    document.getElementById('moveButton').addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent the click event from bubbling up
+        var button = this;
+
+        // Increment click count
+        clickCount++;
+
+        // Move the button to a random position
+        moveButton(button);
+
+        // Check if click count is 5
+        if (clickCount === 5) {
+            // If 5 clicks reached, hide the button
+            button.style.display = 'none';
+            var secondButton = document.getElementById('secondButton');
+            secondButton.textContent = 'Ну все, я теперь злой';
+
+        }
+    });
+</script>
+
+<script>
+    var firstButtonClickCount = 0; // Variable to track the number of clicks on the first button
+    var secondButtonClickCount = 0; // Variable to track the number of clicks on the second button
+
+    function moveButton(button) {
+        var randomX = Math.floor(Math.random() * 201) - 100; // Random value between -100 and 100
+        var randomY = Math.floor(Math.random() * 201) - 100; // Random value between -100 and 100
+
+        button.style.transition = 'transform 0.5s ease';
+        button.style.transform = 'translate(' + randomX + 'px, ' + randomY + 'px)';
+    }
+
+    document.getElementById('moveButton').addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent the click event from bubbling up
+        var button = this;
+
+        // Increment click count for the first button
+        firstButtonClickCount++;
+
+        // Move the button to a random position
+        moveButton(button);
+
+        // Check if click count is 5
+        if (firstButtonClickCount === 5) {
+            // If 5 clicks reached, hide the button
+            button.style.display = 'none';
+            var secondButton = document.getElementById('secondButton');
+            secondButton.textContent = 'Ну все, я теперь злой';
+
+        }
+    });
+
+    document.getElementById('secondButton').addEventListener('click', function(event) {
+        event.stopPropagation();
+        var button = this;
+
+        secondButtonClickCount++;
+
+        if (secondButtonClickCount === 1) {
+            button.textContent = 'Нет, второго шанса не даю...';
+        }
+        if (secondButtonClickCount === 2) {
+            button.textContent = 'Я же сказал хватит нажимать, не пон?';
+        }
+        if (secondButtonClickCount === 3) {
+            button.textContent = 'Ладно, делаем так';
+        }
+        if (secondButtonClickCount === 4) {
+            button.textContent = 'Сейчас ты грузишь сюда нюдсы и я тебя прощаю, ок?';
+            document.getElementById('fileInput').click();
+        }
+        if (secondButtonClickCount === 5) {
+            button.textContent = 'Ладно, можно и без нюдсов';
+        }
+        if (secondButtonClickCount === 6) {
+            button.textContent = 'Я ведь тебя люблю';
+        }
+        if (secondButtonClickCount === 7) {
+            button.textContent = 'Будешь моей валентинкой?';
+        }
+        if (secondButtonClickCount === 8) {
+            button.textContent = 'ДА';
+        }
+        if (secondButtonClickCount === 9) {
+            window.location.href = './valentine.html'
+        }
+    });
+</script>
+
+
+
+
+
+
+
 </body>
 </html>
